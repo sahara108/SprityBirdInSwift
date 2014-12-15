@@ -14,3 +14,9 @@ struct Constants {
     static let FLOOR_BIT_MASK: UInt32 = 0x1 << 2;
     static let BLOCK_BIT_MASK: UInt32 = 0x1 << 3;
 }
+
+enum GameState: Int {
+    case Waiting = 0
+    case Playing
+    case Over
+}

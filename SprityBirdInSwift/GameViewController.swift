@@ -28,6 +28,7 @@ class GameViewController: UIViewController, SceneDelegate {
     
     var scene: Scene?
     var flash: UIView?
+    var isDisplayScore: Bool = false
 	
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
 		scene = Scene(size: gameView.bounds.size)
@@ -60,6 +61,9 @@ class GameViewController: UIViewController, SceneDelegate {
     }
     
     func eventStart() {
+        if (self.isDisplayScore) {
+            return;
+        }
         UIView.animateWithDuration(0.2, animations: {
         self.gameOverView.alpha = 0
         self.gameOverView.transform = CGAffineTransformMakeScale(0.8, 0.8)
@@ -67,6 +71,7 @@ class GameViewController: UIViewController, SceneDelegate {
         self.getReadyView.alpha = 1
             }, completion: {
                 (Bool) -> Void in self.flash!.removeFromSuperview()
+                self.scene!.state = .Waiting
             });
     }
     
@@ -80,6 +85,7 @@ class GameViewController: UIViewController, SceneDelegate {
         self.flash = UIView(frame: self.view.frame)
         self.flash!.backgroundColor = UIColor.whiteColor()
         self.flash!.alpha = 0.9
+        self.isDisplayScore = true
         
         // shakeFrame
         
@@ -106,7 +112,9 @@ class GameViewController: UIViewController, SceneDelegate {
             self.currentScore.text = NSString(format: "%li", self.scene!.score)
             self.bestScoreLabel.text = NSString(format: "%li", Score.bestScore())
             },
-            completion: {(Bool) -> Void in self.flash!.userInteractionEnabled = false})
+            completion: {(Bool) -> Void in self.flash!.userInteractionEnabled = false
+                self.isDisplayScore = false
+            })
 
     }
     

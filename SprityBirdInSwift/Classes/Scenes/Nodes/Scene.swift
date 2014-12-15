@@ -33,13 +33,15 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     
     var sceneDelegate: SceneDelegate?
     
+    var state: GameState = .Waiting
+    
     required override init(size: CGSize) {
         super.init(size: size);
         self.physicsWorld.contactDelegate = self;
         self.startGame();
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -67,6 +69,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
         self.back!.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame);
         self.back!.physicsBody!.categoryBitMask = Constants.BACK_BIT_MASK;
         self.back!.physicsBody!.contactTestBitMask = Constants.BIRD_BIT_MASK;
+        
         self.addChild(self.back!);
     }
     
@@ -81,8 +84,8 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     
     func createFloor() {
         self.floor = SKScrollingNode.scrollingNode("floor", containerWidth: self.frame.size.width) as SKScrollingNode;
-        self.floor!.scrollingSpeed = FLOOR_SCROLLING_SPEED;
-        self.floor!.anchorPoint = CGPointZero;
+        self.floor!.scrollingSpeed = 0
+        self.floor!.anchorPoint = CGPointMake(0, 0);
         self.floor!.name = "floor";
         self.floor!.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.floor!.frame);
         self.floor!.physicsBody!.categoryBitMask = Constants.FLOOR_BIT_MASK;
@@ -124,11 +127,14 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        if(self.birdDeath) {
+        if(self.state == .Over) {
             self.startGame();
-        } else {
+        } else if (self.state == .Waiting) {
+            self.state = .Playing
             self.bird!.startPlaying();
+            self.bird!.bounce()
             self.sceneDelegate!.eventPlay();
+        } else if (self.state == .Playing) {
             self.bird!.bounce();
         }
     }
@@ -203,6 +209,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         if(!self.birdDeath) {
             self.birdDeath = true;
+            self.state = .Over
             Score.registerScore(self.score);
             if(self.sceneDelegate != nil) {
                 self.sceneDelegate!.eventBirdDeath();

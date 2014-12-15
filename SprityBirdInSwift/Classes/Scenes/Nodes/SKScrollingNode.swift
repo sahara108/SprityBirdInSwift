@@ -14,7 +14,7 @@ class SKScrollingNode: SKSpriteNode {
     var scrollingSpeed: CGFloat = 0.0;
     
     class func scrollingNode(imageNamed: String, containerWidth: CGFloat) -> SKScrollingNode {
-        let image = UIImage(named: imageNamed);
+        let image = UIImage(named: imageNamed)!;
         
         let result = SKScrollingNode(color: UIColor.clearColor(), size: CGSizeMake(CGFloat(containerWidth), image.size.height));
         result.scrollingSpeed = 1.0;
