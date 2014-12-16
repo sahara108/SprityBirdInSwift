@@ -35,6 +35,12 @@
 		6DE9D7FD19429EB10090AC80 /* pipe_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE9D7F219429EB10090AC80 /* pipe_bottom@2x.png */; };
 		6DE9D7FE19429EB10090AC80 /* pipe_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE9D7F319429EB10090AC80 /* pipe_top@2x.png */; };
 		6DE9D7FF19429EB10090AC80 /* taptap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE9D7F419429EB10090AC80 /* taptap@2x.png */; };
+		AB9D77E11A3F3BF400C5442A /* GTAGHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9D77DF1A3F3BF400C5442A /* GTAGHelper.m */; };
+		AB9D78651A3F436F00C5442A /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D78641A3F436F00C5442A /* libGoogleAnalyticsServices.a */; };
+		AB9D78671A3F438900C5442A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D78661A3F438900C5442A /* CoreData.framework */; };
+		AB9D78691A3F439700C5442A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D78681A3F439700C5442A /* SystemConfiguration.framework */; };
+		AB9D786B1A3F43A000C5442A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D786A1A3F43A000C5442A /* libz.dylib */; };
+		AB9D786D1A3F43AB00C5442A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D786C1A3F43AB00C5442A /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +86,20 @@
 		6DE9D7F219429EB10090AC80 /* pipe_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pipe_bottom@2x.png"; sourceTree = "<group>"; };
 		6DE9D7F319429EB10090AC80 /* pipe_top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pipe_top@2x.png"; sourceTree = "<group>"; };
 		6DE9D7F419429EB10090AC80 /* taptap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taptap@2x.png"; sourceTree = "<group>"; };
+		AB9D77DE1A3F3BF400C5442A /* GTAGHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTAGHelper.h; sourceTree = "<group>"; };
+		AB9D77DF1A3F3BF400C5442A /* GTAGHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTAGHelper.m; sourceTree = "<group>"; };
+		AB9D77E51A3F3C9400C5442A /* objc-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "objc-header.h"; sourceTree = "<group>"; };
+		AB9D77E61A3F3CF000C5442A /* GTAGKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTAGKeys.h; sourceTree = "<group>"; };
+		AB9D785B1A3F3F2000C5442A /* TAGContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainer.h; sourceTree = "<group>"; };
+		AB9D785C1A3F3F2000C5442A /* TAGContainerOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainerOpener.h; sourceTree = "<group>"; };
+		AB9D785D1A3F3F2000C5442A /* TAGDataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGDataLayer.h; sourceTree = "<group>"; };
+		AB9D785E1A3F3F2000C5442A /* TAGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGLogger.h; sourceTree = "<group>"; };
+		AB9D785F1A3F3F2000C5442A /* TAGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGManager.h; sourceTree = "<group>"; };
+		AB9D78641A3F436F00C5442A /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "SprityBirdInSwift/library/Google_ Analytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
+		AB9D78661A3F438900C5442A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		AB9D78681A3F439700C5442A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AB9D786A1A3F43A000C5442A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		AB9D786C1A3F43AB00C5442A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,12 +110,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AB9D78621A3F42E200C5442A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9D786D1A3F43AB00C5442A /* libsqlite3.dylib in Frameworks */,
+				AB9D786B1A3F43A000C5442A /* libz.dylib in Frameworks */,
+				AB9D78691A3F439700C5442A /* SystemConfiguration.framework in Frameworks */,
+				AB9D78671A3F438900C5442A /* CoreData.framework in Frameworks */,
+				AB9D78651A3F436F00C5442A /* libGoogleAnalyticsServices.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6D00495619424141008F317A = {
 			isa = PBXGroup;
 			children = (
+				AB9D786C1A3F43AB00C5442A /* libsqlite3.dylib */,
+				AB9D786A1A3F43A000C5442A /* libz.dylib */,
+				AB9D78681A3F439700C5442A /* SystemConfiguration.framework */,
+				AB9D78661A3F438900C5442A /* CoreData.framework */,
+				AB9D78641A3F436F00C5442A /* libGoogleAnalyticsServices.a */,
+				AB9D77E81A3F3EEF00C5442A /* Libs */,
 				6D00496119424141008F317A /* SprityBirdInSwift */,
 				6D00497419424141008F317A /* SprityBirdInSwiftTests */,
 				6D00496019424141008F317A /* Products */,
@@ -157,12 +195,14 @@
 		6DE9D7B2194242A40090AC80 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AB9D77DD1A3F3BF400C5442A /* library */,
 				6DE9D7CA194243C80090AC80 /* Controllers */,
 				6DE9D7CB194243C80090AC80 /* Helpers */,
 				6DE9D7CC194243C80090AC80 /* Models */,
 				6DE9D7CD194243C80090AC80 /* Scenes */,
 				6D00496419424141008F317A /* AppDelegate.swift */,
 				6DE9D7D3194261D00090AC80 /* Constants.swift */,
+				AB9D77E51A3F3C9400C5442A /* objc-header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -235,6 +275,37 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		AB9D77DD1A3F3BF400C5442A /* library */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D77E61A3F3CF000C5442A /* GTAGKeys.h */,
+				AB9D77DE1A3F3BF400C5442A /* GTAGHelper.h */,
+				AB9D77DF1A3F3BF400C5442A /* GTAGHelper.m */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		AB9D77E81A3F3EEF00C5442A /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D785A1A3F3F2000C5442A /* Library */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		AB9D785A1A3F3F2000C5442A /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D785B1A3F3F2000C5442A /* TAGContainer.h */,
+				AB9D785C1A3F3F2000C5442A /* TAGContainerOpener.h */,
+				AB9D785D1A3F3F2000C5442A /* TAGDataLayer.h */,
+				AB9D785E1A3F3F2000C5442A /* TAGLogger.h */,
+				AB9D785F1A3F3F2000C5442A /* TAGManager.h */,
+			);
+			name = Library;
+			path = "SprityBirdInSwift/library/Google_ Analytics/GoogleTagManager/Library";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,6 +315,7 @@
 			buildPhases = (
 				6D00495B19424141008F317A /* Sources */,
 				6D00495D19424141008F317A /* Resources */,
+				AB9D78621A3F42E200C5442A /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -357,6 +429,7 @@
 				6DE9D7D9194277000090AC80 /* Scene.swift in Sources */,
 				6DE9D7CF194243DA0090AC80 /* Score.swift in Sources */,
 				6D00496519424141008F317A /* AppDelegate.swift in Sources */,
+				AB9D77E11A3F3BF400C5442A /* GTAGHelper.m in Sources */,
 				6DE9D7DB19427E170090AC80 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,11 +538,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SprityBirdInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SprityBirdInSwift/library/Google_",
+					Analytics,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7a4ce288-0f5f-438e-89c9-997429fcdaf8";
+				SWIFT_OBJC_BRIDGING_HEADER = "SprityBirdInSwift/Classes/objc-header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -481,11 +562,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = SprityBirdInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SprityBirdInSwift/library/Google_",
+					Analytics,
+				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7a4ce288-0f5f-438e-89c9-997429fcdaf8";
+				SWIFT_OBJC_BRIDGING_HEADER = "SprityBirdInSwift/Classes/objc-header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
