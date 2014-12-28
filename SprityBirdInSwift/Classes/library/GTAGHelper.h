@@ -18,13 +18,4 @@ typedef NS_ENUM(NSUInteger, ShizzleLogLevel) {
 
 +(instancetype)shareInstance;
 
--(NSString*)host;
--(NSString*)webURL;
--(NSString*)forgotURL;
--(NSString*)runscopePort;
--(int64_t)videoLimitedTime;
--(ShizzleLogLevel)logLevel;
-
--(NSString*)hostWithoutRunscope;
-
 @end

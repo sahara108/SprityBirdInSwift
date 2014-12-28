@@ -29,6 +29,8 @@ class GameViewController: UIViewController, SceneDelegate {
     var scene: Scene?
     var flash: UIView?
     var isDisplayScore: Bool = false
+    var banner: GADBannerView?
+    var adTimer: NSTimer?
 	
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
 		scene = Scene(size: gameView.bounds.size)
@@ -52,18 +54,49 @@ class GameViewController: UIViewController, SceneDelegate {
         self.scene!.scaleMode = .AspectFill
         self.scene!.sceneDelegate = self
         
-        // Present the scene
+        self.banner = GADBannerView(adSize: kGADAdSizeLargeBanner, origin: CGPointZero)
+        self.banner!.adUnitID = GADAdmobUnitId
+        let request = GADRequest.instance()
+        request.testDevices = [GAD_SIMULATOR_ID]
+        self.banner!.rootViewController = self;
+        self.banner!.loadRequest(request)
+        self.banner!.layer.borderColor = UIColor.redColor().CGColor
+        self.banner!.layer.borderWidth = 2;
+        self.gameView.addSubview(self.banner!)
+        self.hideAd()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.presentGameScene();
+    }
+    
+    func presentGameScene() {
         self.gameOverView.alpha = 0
         self.gameOverView.transform = CGAffineTransformMakeScale(0.9, 0.9)
         
         self.gameView.presentScene(scene)
-
     }
+    
+    func hideAd() {
+        self.banner!.hidden = true;
+    }
+    
+    func showAd() {
+        self.banner!.hidden = false;
+    }
+    
     
     func eventStart() {
         if (self.isDisplayScore) {
             return;
         }
+        if let timer = self.adTimer {
+            timer.invalidate()
+            self.adTimer = nil
+        }
+        self.hideAd()
         UIView.animateWithDuration(0.2, animations: {
         self.gameOverView.alpha = 0
         self.gameOverView.transform = CGAffineTransformMakeScale(0.8, 0.8)
@@ -82,6 +115,12 @@ class GameViewController: UIViewController, SceneDelegate {
     }
     
     func eventBirdDeath() {
+        if let timer = self.adTimer {
+            timer.invalidate()
+            self.adTimer = nil
+        }
+        self.adTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "showAd", userInfo: nil, repeats: false)
+        
         self.flash = UIView(frame: self.view.frame)
         self.flash!.backgroundColor = UIColor.whiteColor()
         self.flash!.alpha = 0.9

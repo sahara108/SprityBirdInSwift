@@ -62,7 +62,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     }
     
     func createBackground() {
-        self.back = SKScrollingNode.scrollingNode("back", containerWidth:self.frame.size.width);
+        self.back = SKScrollingNode.scrollingNode("background_City-01", containerWidth:self.frame.size.width);
         //self.setScale(2.0);
         self.back!.scrollingSpeed = BACK_SCROLLING_SPEED;
         self.back!.anchorPoint = CGPointZero;
@@ -84,7 +84,7 @@ class Scene : SKScene, SKPhysicsContactDelegate {
     
     func createFloor() {
         self.floor = SKScrollingNode.scrollingNode("floor", containerWidth: self.frame.size.width) as SKScrollingNode;
-        self.floor!.scrollingSpeed = 0
+        self.floor!.scrollingSpeed = 2
         self.floor!.anchorPoint = CGPointMake(0, 0);
         self.floor!.name = "floor";
         self.floor!.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.floor!.frame);

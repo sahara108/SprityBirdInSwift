@@ -20,3 +20,5 @@ enum GameState: Int {
     case Playing
     case Over
 }
+
+let GADAdmobUnitId = "ca-app-pub-9164163399397953/2805068620"

@@ -55,12 +55,6 @@ static int64_t limitTime = 900; //15 minutes
     self = [super init];
     if (self) {
         //create default value
-        [self setup];
-        
-#if DEMO_SERVER || TEST_SERSVER || INT_SERSVER
-        //get value from GTA
-        [self load];
-#endif
     }
     
     return self;
@@ -68,20 +62,11 @@ static int64_t limitTime = 900; //15 minutes
 
 -(void)setup
 {
-//    _host = PhoShizzleHost;
-//    _forgotURL = shizzleForgotPasswordURL;
-//    _logLevel = ShizzleLogLevelEnableLogFile;
-//    _videoLimitedTime = limitTime;
-//    _runscopePort = PhoShizzleRunscopePort;
-//    _webURL = PhoShizzleWebURL;
 }
 
 -(void)load
 {
     self.tagManager = [TAGManager instance];
-    
-    // Optional: Change the LogLevel to Verbose to enable logging at VERBOSE and higher levels.
-    [self.tagManager.logger setLogLevel:kTAGLoggerLogLevelVerbose];
     
     id future =
     [TAGContainerOpener openContainerWithId:TAGIdentifier   // Update with your Container ID.
@@ -92,33 +77,14 @@ static int64_t limitTime = 900; //15 minutes
     // Method calls that don't need the container.
     self.container = [future get];
     self.currentContainerVersion = [self.container valueForKey:@"resourceVersion"];
-    [self.container addObserver:self forKeyPath:@"lastRefreshTime" options:NSKeyValueObservingOptionNew context:TAGRefreshResourceFromNetworkContext];
     
     [self patchInfomationFromGTA];
     [self.container refresh];
 }
 
--(void)dealloc
-{
-    [self.container removeObserver:self forKeyPath:@"lastRefreshTime"];
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 {
     [self patchInfomationFromGTA];
-}
-
-#pragma mark NetworkCallback
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == TAGRefreshResourceFromNetworkContext) {
-        NSString *version = [self.container valueForKey:@"resourceVersion"];
-        if (![version isEqualToString:self.currentContainerVersion]) {
-            self.currentContainerVersion = version;
-            [[[UIAlertView alloc] initWithTitle:@"" message:@"Google TAG manager has changed. Shizzle will automatically logout to apply new settings. Please sign in again to continue using." delegate:self cancelButtonTitle:@"DONE" otherButtonTitles:nil] show];
-        }
-    }
 }
 
 #pragma mark Setter
@@ -158,50 +124,5 @@ static int64_t limitTime = 900; //15 minutes
 }
 
 #pragma mark Getter
-
--(NSString *)hostWithoutRunscope
-{
-    NSString *host = _host;
-    NSString *port = _runscopePort;
-    if ([host rangeOfString:@"runscope"].length > 0) {
-        host = [host stringByReplacingOccurrencesOfString:@".runscope.net/shizzle-service/" withString:@""];
-        host = [host stringByReplacingOccurrencesOfString:@"-" withString:@"."];
-        NSString *lastPath = [NSString stringWithFormat:@".%@",host.pathExtension];
-        host = [host stringByReplacingOccurrencesOfString:lastPath withString:[NSString stringWithFormat:@":%@",port]];
-        host = [host stringByAppendingString:@"/shizzle-service/"];
-    }
-    
-    return host;
-}
-
--(NSString *)runscopePort
-{
-    return _runscopePort;
-}
-
--(NSString *)host
-{
-    return _host;
-}
-
--(NSString *)webURL
-{
-    return _webURL;
-}
-
--(NSString *)forgotURL
-{
-    return _forgotURL;
-}
-
--(ShizzleLogLevel)logLevel
-{
-    return _logLevel;
-}
-
--(int64_t)videoLimitedTime
-{
-    return _videoLimitedTime;
-}
 
 @end
